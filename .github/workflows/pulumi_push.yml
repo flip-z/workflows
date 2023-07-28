@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'pulumi/**'
 jobs:
   update:
     name: Update
