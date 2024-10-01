@@ -1,0 +1,19 @@
+name: New Issue Trigger
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run script
+      run: |
+        chmod +x ./functions/main.py
+        ./functions/main.py
+
