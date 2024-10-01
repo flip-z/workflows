@@ -1,19 +1,30 @@
-name: New Issue Trigger
+name: Run Python Script on New Issue
 
 on:
   issues:
     types: [opened]
 
 jobs:
-  run-script:
+  run-python-script:
     runs-on: ubuntu-latest
 
     steps:
+    # Step 1: Checkout the repository so the Python script can be accessed
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Run script
-      run: |
-        chmod +x ./functions/main.py
-        ./functions/main.py
+    # Step 2: Set up Python
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
 
+    # Step 3: Install dependencies (if any)
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt || true  # Skip if no requirements.txt
+
+    # Step 4: Run your Python script
+    - name: Run Python script
+      run: |
+        python ./functions/main.py
