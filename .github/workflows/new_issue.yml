@@ -5,7 +5,7 @@ on:
     types: [opened]
 
 jobs:
-  run-python-script:
+  run-function:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,6 +25,6 @@ jobs:
         pip install -r requirements.txt || true  # Skip if no requirements.txt
 
     # Step 4: Run your Python script
-    - name: Run Python script
+    - name: FUNCTION
       run: |
         python ./functions/main.py
