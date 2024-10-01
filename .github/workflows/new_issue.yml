@@ -28,3 +28,7 @@ jobs:
     - name: FUNCTION
       run: |
         python ./functions/main.py
+      env:
+        ISSUE_TITLE: "${{ github.event.issue.title }}"
+        ISSUE_BODY: "${{ github.event.issue.body }}"
+        ISSUE_URL: "${{ github.event.issue.html_url }}"
